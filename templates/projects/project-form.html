@@ -1,0 +1,29 @@
+{% extends '../main.html' %}
+{% load widget_tweaks %}
+{% block title %} Add Project {% endblock %}
+{% block content %}
+
+ <main class="formPage my-xl">
+	<div class="content-box">
+		<div class="formWrapper">
+			<a class="backButton" href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+			<br>
+
+			<form class="form" method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				{% for field in form %}
+				<div class="form__field">
+				    <label for='id_{{ field.label|lower }}'>{{ field.label }}: </label>
+				    {{ field|add_class:"input input--text" }}
+				</div>
+				{% endfor %}
+
+				<div class="form__field form__field--action">
+                  <input class="btn btn--main" type="submit" value="Submit" />
+                </div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}
